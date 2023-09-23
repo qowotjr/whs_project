@@ -67,7 +67,7 @@ void got_packet(u_char *args, const struct pcap_pkthdr *header, const u_char *pa
     }
 
     //TCP header src/dst 출력
-    int ip_header_len = ip->iph_ihl;
+    int ip_header_len = ip->iph_ihl *4;
     struct tcpheader *tcp = (struct tcpheader *)(packet + sizeof(struct ethheader) + ip_header_len);
     printf("TCP src port: %u\n", tcp->tcp_sport);
     printf("TCP dst port: %u\n", tcp->tcp_dport);
